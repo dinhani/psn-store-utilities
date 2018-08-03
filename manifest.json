@@ -1,0 +1,30 @@
+{
+    "name": "PSN Utilities",
+    "description": "",
+    "version": "1.0",
+    "manifest_version": 2,
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://store.playstation.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_title": "PSN Utilities"
+    },
+    "permissions": [
+        "declarativeContent",
+        "storage"
+    ]
+}
