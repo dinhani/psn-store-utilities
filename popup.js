@@ -1,19 +1,19 @@
 // =============================================================================
 // INIT PAGE
 // =============================================================================
-chrome.storage.local.get(["hideGames"], function (result) {
-    if (result.hideGames !== undefined) {
-        hideGames.checked = result.hideGames;
+chrome.storage.local.get(["hideOwnedGames"], function (result) {
+    if (result.hideOwnedGames !== undefined) {
+        hideOwnedGames.checked = result.hideOwnedGames;
     }
 });
 
 // =============================================================================
 // CHECKBOX EVENTS
 // =============================================================================
-hideGames.onclick = function (event) {
+hideOwnedGames.onclick = function (event) {
     // save option
-    let hideGamesChecked = event.target.checked;
-    chrome.storage.local.set({ hideGames: hideGamesChecked }, function () {
+    let hideOwnedGamesChecked = event.target.checked;
+    chrome.storage.local.set({ hideOwnedGames: hideOwnedGamesChecked }, function () {
         chrome.runtime.sendMessage("toggleGames");
     });
 }

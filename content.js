@@ -2,16 +2,16 @@
 // FUNCTIONS
 // =============================================================================
 function toggleGames() {
-    chrome.storage.local.get(["hideGames"], function (result) {
+    chrome.storage.local.get(["hideOwnedGames"], function (result) {
         // read if should hide or not
-        let hideGames = result.hideGames == true;
+        let hideOwnedGames = result.hideOwnedGames == true;
 
         document
             .querySelectorAll(".grid-cell--game .grid-cell__ineligible-reason")
             .forEach(element => {
                 // original element is game div
                 if (isGameDiv(element)) {
-                    toggleGameDiv(element, hideGames)
+                    toggleGameDiv(element, hideOwnedGames)
                     return;
                 }
 
@@ -19,7 +19,7 @@ function toggleGames() {
                 element = element.parentElement;
                 while (element != null) {
                     if (isGameDiv(element)) {
-                        toggleGameDiv(element, hideGames);
+                        toggleGameDiv(element, hideOwnedGames);
                         break;
                     } else {
                         element = element.parentElement;
