@@ -1,5 +1,5 @@
 {
-    "name": "PSN Utilities",
+    "name": "PSN Store Utilities",
     "description": "",
     "version": "1.0",
     "manifest_version": 2,
@@ -21,7 +21,7 @@
     ],
     "page_action": {
         "default_popup": "popup.html",
-        "default_title": "PSN Utilities"
+        "default_title": "PSN Store Utilities"
     },
     "permissions": [
         "declarativeContent",
