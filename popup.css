@@ -6,6 +6,10 @@ body {
     min-width: 200px;
 }
 
+button {
+    width: 100%;
+}
+
 .section {
     margin-top: 1rem;
 }

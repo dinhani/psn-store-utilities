@@ -15,7 +15,10 @@
                 "https://store.playstation.com/*"
             ],
             "js": [
-                "lib/jquery.js", "content-hide-games.js", "content-export-games-prices.js"
+                "lib/jquery.js",
+                "content-hide-games.js",
+                "content-export-games-prices.js",
+                "content-export-games-library.js"
             ]
         }
     ],

@@ -13,6 +13,9 @@ chrome.storage.local.get(["hideOwnedGames"], function (result) {
 exportGamesPrices.onclick = function (event) {
     chrome.storage.local.set({ exportGamesPrices: true });
 }
+exportGamesLibrary.onclick = function (event) {
+    chrome.storage.local.set({ exportGamesLibrary: true });
+}
 
 // =============================================================================
 // CHECKBOX EVENTS
