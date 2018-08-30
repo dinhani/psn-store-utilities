@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<body style="min-width: 200px">
-    <input id="hideOwnedGames" type="checkbox">
-    <label for="hideOwnedGames">Hide owned games</label>
+<head>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="section">
+        <h2 class="section__header">Actions</h2>
+        <button id="exportGamesPrices">Export Games Prices</button>
+    </div>
+
+    <div class="section">
+        <h2 class="section__header">Options</h2>
+        <input id="hideOwnedGames" type="checkbox">
+        <label for="hideOwnedGames">Hide owned games</label>
+    </div>
 
     <script src="popup.js"></script>
 </body>
