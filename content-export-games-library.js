@@ -26,6 +26,7 @@ function exportGamesLibrary(games) {
         // basic info
         game.id = jQuery(element).find("a").attr("href").split("/")[3];
         game.name = jQuery(element).find(".download-list-item__title").text().trim();
+        game.image = jQuery(element).find(".product-image__img--main img").attr("src");
 
         // platform
         game.platform = jQuery(element).find(".download-list-item__playable-on-info").text();
@@ -66,7 +67,7 @@ function exportGamesLibrary(games) {
 }
 
 function writeGamesLibraryToCsv(games) {
-    csv = '"ID";"Name";"Size";"SizeInMB";"Type";"BuyDate";"Platform"<br>';
+    csv = '"ID";"Name";"Size";"SizeInMB";"Type";"BuyDate";"Platform";"Image"<br>';
     for (var gameIndex = 0; gameIndex < games.length; gameIndex++) {
         var game = games[gameIndex];
         csv +=
@@ -83,6 +84,8 @@ function writeGamesLibraryToCsv(games) {
             + '"' + game.buy + '"'
             + ";"
             + '"' + game.platform + '"'
+            + ";"
+            + '"' + game.image + '"'
             + "<br>";
     }
     document.write(csv);
