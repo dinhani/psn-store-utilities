@@ -1,13 +1,19 @@
 * {
     font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
-    min-width: 200px;
+    min-width: 300px;
 }
 
 button {
+    display: block;
+    margin-top: 1rem;
+
     width: 100%;
+    padding: .25rem 0;
+    cursor: pointer;
 }
 
 .section {
