@@ -19,7 +19,7 @@ function runExportGamesLibrary() {
 // TASK FUNCTIONS
 // =============================================================================
 function exportGamesLibrary(games) {
-    // get prices from current page
+    // get games from current page
     jQuery(".download-list-item").each(function (index, element) {
         game = {};
 
@@ -52,7 +52,7 @@ function exportGamesLibrary(games) {
     var lastPage = jQuery(".paginator-control__end.paginator-control__arrow-navigation.paginator-control__arrow-navigation--disabled").length;
     if (lastPage) {
         // if last page, save collected games
-        writeGamesToCsv(games);
+        writeGamesLibraryToCsv(games);
     } else {
         // if not last page, go to next page and collect more games
         jQuery(".paginator-control__next")[0].click();
@@ -60,20 +60,21 @@ function exportGamesLibrary(games) {
     }
 }
 
-function writeGamesToCsv(games) {
+function writeGamesLibraryToCsv(games) {
     csv = '"Name";"Size";"SizeInMB";"Type";"BuyDate";"Platform"<br>';
     for (var gameIndex = 0; gameIndex < games.length; gameIndex++) {
-        csv += '"' + games[gameIndex].name + '"'
+        var game = games[gameIndex];
+        csv += '"' + game.name + '"'
             + ";"
-            + '"' + games[gameIndex].size + '"'
+            + '"' + game.size + '"'
             + ";"
-            + games[gameIndex].sizeInMB
+            + game.sizeInMB
             + ";"
-            + '"' + games[gameIndex].type + '"'
+            + '"' + game.type + '"'
             + ";"
-            + '"' + games[gameIndex].buy + '"'
+            + '"' + game.buy + '"'
             + ";"
-            + '"' + games[gameIndex].platform + '"'
+            + '"' + game.platform + '"'
             + "<br>";
     }
     document.write(csv);

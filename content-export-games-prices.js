@@ -43,7 +43,7 @@ function exportGamesPrices(games) {
     var lastPage = jQuery(".paginator-control__end.paginator-control__arrow-navigation.paginator-control__arrow-navigation--disabled").length;
     if (lastPage) {
         // if last page, save collected games
-        writeGamesToCsv(games);
+        writeGamesPricesToCsv(games);
     } else {
         // if not last page, go to next page and collect more games
         jQuery(".paginator-control__next")[0].click();
@@ -51,18 +51,19 @@ function exportGamesPrices(games) {
     }
 }
 
-function writeGamesToCsv(games) {
+function writeGamesPricesToCsv(games) {
     csv = '"Name";"Price";"Platform";"Type";"Image"<br>';
     for (var gameIndex = 0; gameIndex < games.length; gameIndex++) {
-        csv += '"' + games[gameIndex].name + '"'
+        var game = games[gameIndex];
+        csv += '"' + game.name + '"'
             + ";"
-            + games[gameIndex].price.replace("R$", "").replace(",", ".")
+            + game.price.replace("R$", "").replace(",", ".")
             + ";"
-            + '"' + games[gameIndex].platform + '"'
+            + '"' + game.platform + '"'
             + ";"
-            + '"' + games[gameIndex].type + '"'
+            + '"' + game.type + '"'
             + ";"
-            + '"' + games[gameIndex].image + '"'
+            + '"' + game.image + '"'
             + "<br>";
     }
     document.write(csv);
