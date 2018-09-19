@@ -22,8 +22,6 @@ function exportGamesLibrary(games) {
     // get games from current page
     jQuery(".download-list-item").each(function (index, element) {
         try {
-
-
             game = {};
 
             // basic info

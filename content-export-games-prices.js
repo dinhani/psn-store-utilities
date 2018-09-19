@@ -22,8 +22,6 @@ function exportGamesPrices(games) {
     // get gane information from current page
     jQuery(".grid-cell--game").each(function (index, element) {
         try {
-
-
             game = {};
 
             game.id = jQuery(element).find("a").attr("href").split("/")[3];
@@ -82,4 +80,4 @@ function writeGamesPricesToCsv(games) {
 // =============================================================================
 // EXECUTION
 // =============================================================================
-setInterval(runExportGamesPrices, 500);
+setInterval(runExportGamesPrices, 1000);
