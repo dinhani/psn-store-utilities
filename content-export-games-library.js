@@ -21,37 +21,43 @@ function runExportGamesLibrary() {
 function exportGamesLibrary(games) {
     // get games from current page
     jQuery(".download-list-item").each(function (index, element) {
-        game = {};
-
-        // basic info
-        game.id = jQuery(element).find("a").attr("href").split("/")[3];
-        game.name = jQuery(element).find(".download-list-item__title").text().trim();
-        game.image = jQuery(element).find(".product-image__img--main img").attr("src");
-
-        // platform
-        game.platform = jQuery(element).find(".download-list-item__playable-on-info").text();
-        if (game.platform) {
-            game.platform = /(PS3|PS4|PS Vita)/.exec(game.platform)[0];
-        }
-
-        // metadata
-        game.metadata = jQuery(element).find(".download-list-item__metadata").text().trim();
-        game.type = game.metadata.split("|")[0].trim();
-        game.size = game.metadata.split("|")[1].trim();
-        game.buy = game.metadata.split("|")[2].trim();
-
-        // size
-        game.sizeInMB = game.size;
-        game.sizeInMB = game.sizeInMB.replace("KB", " / 1024");
-        game.sizeInMB = game.sizeInMB.replace("MB", " * 1");
-        game.sizeInMB = game.sizeInMB.replace("GB", " * 1024");
         try {
-            game.sizeInMB = eval(game.sizeInMB);
-        } catch (e) {
-            game.sizeInMB = 0;
-        }
 
-        games.push(game);
+
+            game = {};
+
+            // basic info
+            game.id = jQuery(element).find("a").attr("href").split("/")[3];
+            game.name = jQuery(element).find(".download-list-item__title").text().trim();
+            game.image = jQuery(element).find(".product-image__img--main img").attr("src");
+
+            // platform
+            game.platform = jQuery(element).find(".download-list-item__playable-on-info").text();
+            if (game.platform) {
+                game.platform = /(PS3|PS4|PS Vita)/.exec(game.platform)[0];
+            }
+
+            // metadata
+            game.metadata = jQuery(element).find(".download-list-item__metadata").text().trim();
+            game.type = game.metadata.split("|")[0].trim();
+            game.size = game.metadata.split("|")[1].trim();
+            game.buy = game.metadata.split("|")[2].trim();
+
+            // size
+            game.sizeInMB = game.size;
+            game.sizeInMB = game.sizeInMB.replace("KB", " / 1024");
+            game.sizeInMB = game.sizeInMB.replace("MB", " * 1");
+            game.sizeInMB = game.sizeInMB.replace("GB", " * 1024");
+            try {
+                game.sizeInMB = eval(game.sizeInMB);
+            } catch (e) {
+                game.sizeInMB = 0;
+            }
+
+            games.push(game);
+        } catch (error) {
+            console.error(error);
+        }
     });
 
     // check if reached last page

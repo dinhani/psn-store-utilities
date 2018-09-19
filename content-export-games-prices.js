@@ -21,22 +21,28 @@ function runExportGamesPrices() {
 function exportGamesPrices(games) {
     // get gane information from current page
     jQuery(".grid-cell--game").each(function (index, element) {
-        game = {};
+        try {
 
-        game.id = jQuery(element).find("a").attr("href").split("/")[3];
-        game.name = jQuery(element).find(".grid-cell__title").text().trim();
-        game.image = jQuery(element).find(".product-image__img--main img").attr("src");
-        game.price = jQuery(element).find("h3").text().trim();
-        if (game.price === "Gratuito") {
-            game.price = "0";
-        }
-        game.platform = jQuery(element).find(".grid-cell__left-detail--detail-1").text().trim();
-        game.type = jQuery(element).find(".grid-cell__left-detail--detail-2").text().trim();
 
-        // only add game if has a price
-        // if does not have a price, it is a game that I already own
-        if (game.price) {
-            games.push(game);
+            game = {};
+
+            game.id = jQuery(element).find("a").attr("href").split("/")[3];
+            game.name = jQuery(element).find(".grid-cell__title").text().trim();
+            game.image = jQuery(element).find(".product-image__img--main img").attr("src");
+            game.price = jQuery(element).find("h3").text().trim();
+            if (game.price === "Gratuito") {
+                game.price = "0";
+            }
+            game.platform = jQuery(element).find(".grid-cell__left-detail--detail-1").text().trim();
+            game.type = jQuery(element).find(".grid-cell__left-detail--detail-2").text().trim();
+
+            // only add game if has a price
+            // if does not have a price, it is a game that I already own
+            if (game.price) {
+                games.push(game);
+            }
+        } catch (error) {
+            console.log(error);
         }
     });
 
